@@ -29,10 +29,33 @@ left: 90%;
 }
 
 
+  .bg {
+
+      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/TSC%2Clawn.jpg/1920px-TSC%2Clawn.jpg') no-repeat;
+        width: 100%;
+        height: 100vh;
+        color: white;
+        font-weight: bold;
+    }
+
+    .background{
+    	background-color: black;
+    	background-size: cover;
+	    position: absolute;
+	    top: -10px;
+	    right: -10px;
+	    bottom: -40px;
+	    left: -10px;
+	    opacity: 0.6;
+
+    }
+
 </style>
 
 </head>
-<body>
+<body class="bg">
+
+	<div class="background">
 
 
 <?php
@@ -46,13 +69,13 @@ left: 90%;
 
 
         if(array_key_exists('approved', $_POST)) { 
-            echo "This is the list of already approved system access"; 
+            echo "This is the list of already approved testimonial applications"; 
         } 
         else if(array_key_exists('notapproved', $_POST)) { 
-            echo "This is the list of rejected system access";
+            echo "This is the list of rejected testimonial applications";
         } 
         else if (array_key_exists('pending', $_POST)){
-        	echo "This is the list of pending system access";
+        	echo "This is the list of pending testimonial applications";
         }
 	} 
 	else {
@@ -111,7 +134,7 @@ left: 90%;
 
             $sql = "SELECT name, email, mobile, address, usertype, fathername, mothername, degree, regno, todaysdate, applystatus, approvestatus FROM s_apply WHERE applystatus = 'applied' AND approvestatus = 'approved'";
 			$result = mysqli_query($conn, $sql);
-			// echo mysqli_num_rows($result);
+			
 			echo "<table border='1' class='center'>";
 			echo "<tr>";
 			echo "<th> Name</th> <th>Email</th> <th>Mobile No.</th> <th>Address</th> <th>User Type</th> <th>Father's name</th> <th>Mother's name</th> <th>Last degree</th> <th>Registration No</th> <th>Date</th> <th>Application Status</th> <th>Approval Status</th>";
@@ -155,7 +178,7 @@ left: 90%;
 
            $sql = "SELECT name, email, mobile, address, usertype, fathername, mothername, degree, regno, todaysdate, applystatus, approvestatus FROM s_apply WHERE applystatus = 'applied' AND approvestatus = 'rejected'";
 			$result = mysqli_query($conn, $sql);
-			// echo mysqli_num_rows($result);
+			
 			echo "<table border='1' class='center'>";
 			echo "<tr>";
 			echo "<th> Name</th> <th>Email</th> <th>Mobile No.</th> <th>Address</th> <th>User Type</th> <th>Father's name</th> <th>Mother's name</th> <th>Last degree</th> <th>Registration No</th> <th>Date</th> <th>Application Status</th> <th>Approval Status</th>";
@@ -238,24 +261,19 @@ left: 90%;
 		
 
 
-    ?> 
-
-  
+    ?>
 
 
 
+<p style='position: relative; bottom: 0; width:90%; text-align: right'>To go back Student's System Access Page click <a href= 'adminpage.php' style='color: #00FFFF'>here</a></p>
 
 
-
-
-<p style='position: relative; bottom: 0; width:100%; text-align: right'>Please click <a href= 'adminpage.php'>here</a> to go back to Student's System Access Page</p>
-
-
-
+</div>
 
 
 </body>
-<html>
+
+</html>
 
 
 

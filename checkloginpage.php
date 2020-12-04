@@ -62,26 +62,22 @@
 			// If result matched $myusername and $mypassword, table row must be 1 row
 			if($countStudent == 1){
 
-		        // Register $myusername, $mypassword and redirect to file "login_success.php"
 
 		        $_SESSION['email'] = $Email;
 		        $_SESSION['pass'] = $Password;
-		        // header("location:studentpage.php");
 
 		        echo "<script>document.location='http://localhost/IITProject/studentpage.php'</script>";
 			}elseif ($countAdmin == 1) {
-				// Register $myusername, $mypassword and redirect to file "login_success.php"
 
 		        $_SESSION['email'] = $Email;
 		        $_SESSION['pass'] = $Password;
-		        // header("location:adminpage.php");
+
 		        echo "<script>document.location='http://localhost/IITProject/adminpage.php'</script>";
 			}elseif ($countSuperAdmin == 1) {
-				// Register $myusername, $mypassword and redirect to file "login_success.php"
 
 		        $_SESSION['email'] = $Email;
 		        $_SESSION['pass'] = $Password;
-		        // header("location:superadminpage.php");
+
 		        echo "<script>document.location='http://localhost/IITProject/superadminpage.php'</script>";		       
 			}
 			else {
@@ -89,22 +85,9 @@
 		    echo '<a href="login.php"><button>back</button></a>';
 			}
 
-
-
-
-
-
-
-
-
-		// if ($conn != null)
-		// mysqli_close($conn);
-
-
-
-
 	?>
 
 </body>
+
 </html>
 

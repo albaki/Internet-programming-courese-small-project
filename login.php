@@ -5,13 +5,44 @@
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
  
+<style type="text/css">
+
+    .bg {
+
+      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/TSC%2Clawn.jpg/1920px-TSC%2Clawn.jpg') no-repeat;
+        width: 100%;
+        height: 100vh;
+        color: black;
+        font-weight: bold;
+    }
+
+    .form-conatiner{
+      border: 1px solid #fff;
+      padding: 5px 60px; 
+      margin-top: 10vh;
+      background: rgba(255, 255, 255, 0.3);
+      /*opacity: 0.4;*/
+      color: black;
+      box-shadow: 0 0 10px 5px;
+      font-weight: bold;
+    }
+
+    .btn{
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+
+
+  </style>
+
+
   </head>
 
   <!-- Finishing importing -->
 
-<body>
+<body class="bg">
   <div class="container">
-    <form name = "regForm" action="checkloginpage.php" method="post">
+    <form name = "regForm" action="checkloginpage.php" method="post" class="form-conatiner">
         <h2 style='text-align:center'>Login to testimonial application system</h2> <br />
 
         <div class="form-row">
@@ -39,7 +70,7 @@
 
 
           <div class="col-12">
-          <input type="submit"/>
+          <input type="submit" class="btn btn-success btn-block"/>
           </div>
 
 
@@ -47,7 +78,7 @@
         
     </form>
 
-    <p style='position: relative; bottom: 0; width:100%; text-align: right'>If you don't registered yet please click <a href= 'reg.html'>here</a> to register</p>
+    <p style='position: relative; bottom: 0; width:100%; text-align: right'>If you don't registered yet please click <a href= 'reg.html'>here</a> to sign up</p>
 
   </div>
 

@@ -28,11 +28,34 @@ left: 90%;
   margin-right: auto;
 }
 
+    .bg {
+
+      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/TSC%2Clawn.jpg/1920px-TSC%2Clawn.jpg') no-repeat;
+        width: 100%;
+        height: 100vh;
+        color: white;
+        font-weight: bold;
+    }
+
+    .background{
+    	background-color: black;
+    	background-size: cover;
+	    position: absolute;
+	    top: -10px;
+	    right: -10px;
+	    bottom: -40px;
+	    left: -10px;
+	    opacity: 0.6;
+
+    }
+
 
 </style>
 
 </head>
-<body>
+<body class="bg">
+
+	<div class="background">
 
 
 <?php
@@ -111,7 +134,7 @@ left: 90%;
 
             $sql = "SELECT name, email, mobile, address, usertype, fathername, mothername, degree, regno, studentapprove FROM project WHERE studentapprove = 'ok' AND superadmin = '' ";
 			$result = mysqli_query($conn, $sql);
-			// echo mysqli_num_rows($result);
+		
 			echo "<table border='1' class='center'>";
 			echo "<tr>";
 			echo "<th> Name</th> <th>Email</th> <th>Mobile No.</th> <th>Address</th> <th>User Type</th> <th>Approval status</th>";
@@ -131,7 +154,6 @@ left: 90%;
 			echo "<td>" . $row['usertype'] . "</td>";
 			echo "<td>" . $row['studentapprove'] . "</td>";
 			
-			// echo "<td><input name='reject[]' type='checkbox' value=".$id."><td>";
 			echo "</tr>";
 			}
 			} else {
@@ -151,7 +173,7 @@ left: 90%;
 
             $sql = "SELECT name, email, mobile, address, usertype, fathername, mothername, degree, regno, studentapprove FROM project WHERE studentapprove = 'no' AND superadmin = '' ";
 			$result = mysqli_query($conn, $sql);
-			// echo mysqli_num_rows($result);
+
 			echo "<table border='1' class='center'>";
 			echo "<tr>";
 			echo "<th> Name</th> <th>Email</th> <th>Mobile No.</th> <th>Address</th> <th>User Type</th> <th>Approval status</th>";
@@ -171,7 +193,6 @@ left: 90%;
 			echo "<td>" . $row['usertype'] . "</td>";
 			echo "<td>" . $row['studentapprove'] . "</td>";
 			
-			// echo "<td><input name='reject[]' type='checkbox' value=".$id."><td>";
 			echo "</tr>";
 			}
 			} else {
@@ -189,7 +210,7 @@ left: 90%;
 
 			$sql = "SELECT name, email, mobile, address, usertype, fathername, mothername, degree, regno, studentapprove FROM project WHERE (studentapprove IS NULL OR studentapprove = '') AND usertype = 'Student' ";
 			$result = mysqli_query($conn, $sql);
-			// echo mysqli_num_rows($result);
+
 			echo "<table border='1' class='center'>";
 			echo "<tr>";
 			echo "<th> Name</th> <th>Email</th> <th>Mobile No.</th> <th>Address</th> <th>User Type</th> <th>Select for approve</th>";
@@ -208,7 +229,6 @@ left: 90%;
 			echo "<td>" . $row['address'] . "</td>";
 			echo "<td>" . $row['usertype'] . "</td>";
 			echo "<td>yes<input name='selector[]' type='checkbox' value=".$id."> no<input name='reject[]' type='checkbox' value=".$id."><td>";
-			// echo "<td><input name='reject[]' type='checkbox' value=".$id."><td>";
 			echo "</tr>";
 			}
 			} else {
@@ -216,7 +236,6 @@ left: 90%;
 			}
 		}
 
-		
 
 
     ?> 
@@ -225,15 +244,35 @@ left: 90%;
 
 
 
+    <p style='position: relative; bottom: 0; width:90%; text-align: right'> Assess all testimonial applications <a href= 'adminpage_two.php' style='color: #00FFFF'>here</a> </p>
+   
+<?php
+		
+		$Email = (string) $_SESSION['email'];
+
+
+		$servername = "localhost";
+		$username = "root";
+		$password = "";
+		$dbname = "test";
+		// Create connection
+		$conn = mysqli_connect($servername, $username, $password, $dbname);
+		$sqlsuperadmin = "SELECT * FROM project WHERE email='$Email' AND superadmin = 'ok'";
+		$resultSuperAdmin = mysqli_query($conn, $sqlsuperadmin);
+		$countSuperAdmin = mysqli_num_rows($resultSuperAdmin);
+
+		
+		if($countSuperAdmin == 1){
+			echo "<p style='position: relative; bottom: 0; width:90%; text-align: right'> To go back Super Admin Page click <a href= 'superadminpage.php' style='color: #00FFFF'>here</a> </p>";
+			}
+
+?>
+
+    
 
 
 
-
-    <p style='position: relative; bottom: 0; width:100%; text-align: right'>Please click <a href= 'adminpage_two.php'>here</a> to assess testimonial application</p>
-
-
-
-
+</div>
 
 
 </body>

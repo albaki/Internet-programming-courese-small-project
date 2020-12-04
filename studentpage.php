@@ -29,10 +29,32 @@ left: 90%;
 }
 
 
+  .bg {
+
+      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/TSC%2Clawn.jpg/1920px-TSC%2Clawn.jpg') no-repeat;
+        width: 100%;
+        height: 100vh;
+        color: white;
+        font-weight: bold;
+    }
+
+    .background{
+    	background-color: black;
+    	background-size: cover;
+	    position: absolute;
+	    top: -10px;
+	    right: -10px;
+	    bottom: -40px;
+	    left: -10px;
+	    opacity: 0.6;
+
+    }
+
 </style>
 
 </head>
-<body>
+<body class="bg">
+	<div class="background">
 
 
 <?php
@@ -43,19 +65,6 @@ left: 90%;
 	if(isset($_SESSION['email']) && isset($_SESSION['pass'])){
         echo "<h1 style='text-align:center'> Welcome to student page </h1>";
         echo "<a href= 'logout.php'><button id='user_box'>Logout</button></a>";
-
-
-
-
-        // if(array_key_exists('approved', $_POST)) { 
-        //     echo "This is the list of approved students"; 
-        // } 
-        // else if(array_key_exists('notapproved', $_POST)) { 
-        //     echo "This is the list of not approved students";
-        // } 
-        // else if (array_key_exists('pending', $_POST)){
-        // 	echo "This is the list of pending application of students";
-        // }
 	} 
 	else {
 		header("location:login.php");
@@ -73,8 +82,6 @@ left: 90%;
           
         <input type="submit" name="status"
                 class="button" value="Application Status" /> 
-<!--         <input type="submit" name="pending"
-                class="button" value="Pending" />  -->
     </form> 
 
 
@@ -102,7 +109,7 @@ left: 90%;
 
 			$sql = "SELECT name, email, mobile, address, usertype, fathername, mothername, degree, regno, studentapprove FROM project WHERE studentapprove = 'ok' AND usertype = 'Student' AND email = '".$_SESSION['email']."'";
 			$result = mysqli_query($conn, $sql);
-			// echo mysqli_num_rows($result);
+			
 			echo "<table border='1' class='center'>";
 			echo "<tr>";
 			echo "<th> Name</th> <th>Email</th> <th>Mobile No.</th> <th>Address</th> <th>User Type</th> <th>Father's name</th> <th>Mother's name</th> <th>Last degree</th> <th>Registration No</th> <th>date</th> <th>Apply</th>";
@@ -137,7 +144,7 @@ left: 90%;
 			echo "<input name='degree' type='hidden' value=".$row['degree'].">";
 			echo "<input name='regno' type='hidden' value=".$row['regno'].">";
 			echo "<input name='date' type='hidden' value=".$date.">";
-			// echo "<td><input name='reject[]' type='checkbox' value=".$id."><td>";
+			
 			echo "</tr>";
 			}
 			} else {
@@ -157,7 +164,7 @@ left: 90%;
 
 			$sql = "SELECT name, email, mobile, address, usertype, fathername, mothername, degree, regno, todaysdate, applystatus, approvestatus FROM s_apply WHERE applystatus = 'applied' AND email = '".$_SESSION['email']."'";
 			$result = mysqli_query($conn, $sql);
-			// echo mysqli_num_rows($result);
+			
 			echo "<table border='1' class='center'>";
 			echo "<tr>";
 			echo "<th> Name</th> <th>Email</th> <th>Mobile No.</th> <th>Address</th> <th>User Type</th> <th>Father's name</th> <th>Mother's name</th> <th>Last degree</th> <th>Registration No</th> <th>Date</th> <th>Application Status</th> <th>Approval Status</th>";
@@ -190,3 +197,14 @@ left: 90%;
 			echo "<strong>No pending application found.</strong>";
 			}
 		}
+
+
+?>
+
+
+
+</div>
+
+</body>
+
+</html>

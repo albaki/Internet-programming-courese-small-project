@@ -29,10 +29,36 @@ left: 90%;
 }
 
 
+    .bg {
+
+      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/TSC%2Clawn.jpg/1920px-TSC%2Clawn.jpg') no-repeat;
+        width: 100%;
+        height: 100vh;
+        color: white;
+        font-weight: bold;
+    }
+
+    .background{
+    	background-color: black;
+    	background-size: cover;
+	    position: absolute;
+	    top: -10px;
+	    right: -10px;
+	    bottom: -40px;
+	    left: -10px;
+	    opacity: 0.6;
+
+    }
+
+
+
+
 </style>
 
 </head>
-<body>
+<body class="bg">
+
+	<div class="background">
 
 
 <?php
@@ -67,7 +93,7 @@ left: 90%;
 
   <br><br>
 
-    <form  method='post'> 
+    <form  method='post' class="form-conatiner"> 
         <input type="submit" name="approved"
                 class="button" value="Approved" /> 
           
@@ -131,8 +157,6 @@ left: 90%;
 			echo "<td>" . $row['address'] . "</td>";
 			echo "<td>" . $row['usertype'] . "</td>";
 			echo "<td>" . $row['adminapprove'] . "</td>";
-			
-			// echo "<td><input name='reject[]' type='checkbox' value=".$id."><td>";
 			echo "</tr>";
 			}
 			} else {
@@ -152,7 +176,7 @@ left: 90%;
 
             $sql = "SELECT name, email, mobile, address, usertype, adminapprove FROM project WHERE adminapprove = 'no' AND superadmin = '' ";
 			$result = mysqli_query($conn, $sql);
-			// echo mysqli_num_rows($result);
+			
 			echo "<table border='1' class='center'>";
 			echo "<tr>";
 			echo "<th> Name</th> <th>Email</th> <th>Mobile No.</th> <th>Address</th> <th>User Type</th> <th>Approval status</th>";
@@ -172,7 +196,6 @@ left: 90%;
 			echo "<td>" . $row['usertype'] . "</td>";
 			echo "<td>" . $row['adminapprove'] . "</td>";
 			
-			// echo "<td><input name='reject[]' type='checkbox' value=".$id."><td>";
 			echo "</tr>";
 			}
 			} else {
@@ -190,7 +213,7 @@ left: 90%;
 
 			$sql = "SELECT name, email, mobile, address, usertype FROM project WHERE (adminapprove IS NULL OR adminapprove = '') AND superadmin = '' AND usertype = 'Admin'";
 			$result = mysqli_query($conn, $sql);
-			// echo mysqli_num_rows($result);
+		
 			echo "<table border='1' class='center'>";
 			echo "<tr>";
 			echo "<th> Name</th> <th>Email</th> <th>Mobile No.</th> <th>Address</th> <th>User Type</th> <th>Select for approve</th>";
@@ -209,7 +232,6 @@ left: 90%;
 			echo "<td>" . $row['address'] . "</td>";
 			echo "<td>" . $row['usertype'] . "</td>";
 			echo "<td>yes<input name='selector[]' type='checkbox' value=".$id."> no<input name='reject[]' type='checkbox' value=".$id."><td>";
-			// echo "<td><input name='reject[]' type='checkbox' value=".$id."><td>";
 			echo "</tr>";
 
 			}
@@ -219,24 +241,15 @@ left: 90%;
 			}
 		}
 
-		
-
-
     ?> 
 
-  
+
+
+<p style='position: relative; bottom: 0; width:90%; text-align: right'>To know about student's status please click <a href= 'adminpage.php' style='color: #00FFFF'>here</a></p>
 
 
 
-
-
-
-<p style='position: relative; bottom: 0; width:100%; text-align: right'>To know about student's status please click <a href= 'adminpage.php'>here</a></p>
-
-
-
-
-
+</div>
 
 
 </body>
